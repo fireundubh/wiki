@@ -55,19 +55,34 @@
               v-card.mt-3.animated.fadeInUp.wait-p1s
                 v-toolbar(color='primary', dark, dense, flat)
                   v-toolbar-title.subtitle-1 {{$t(`admin:theme.options`)}}
-                  v-spacer
-                  v-chip(label, color='white', small).primary--text coming soon
                 v-card-text
-                  v-select(
-                    :items='[]'
+                  h3 {{"Sidebar"}}
+                  v-switch.mt-3(
+                    inset
+                    v-model='config.sidebarEnabled'
+                    label='Sidebar'
+                    color='primary'
+                    persistent-hint
+                    hint='When on, the sidebar will be shown. When off, the sidebar will be hidden.'
+                  )
+                  v-select.mt-6(
+                    :items='sidebarAlignments'
                     outlined
                     prepend-icon='mdi-border-vertical'
-                    v-model='config.iconset'
-                    label='Table of Contents Position'
+                    v-model='config.sidebarAlignment'
+                    label='Sidebar Alignment'
                     persistent-hint
-                    hint='Select whether the table of contents is shown on the left, right or not at all.'
-                    disabled
+                    hint='Select whether the sidebar is shown on the left or right.'
                     )
+                  h3.mt-3 {{"Table of Contents"}}
+                  v-switch.mt-3(
+                    inset
+                    v-model='config.tocEnabled'
+                    label='Table of Contents'
+                    color='primary'
+                    persistent-hint
+                    hint='When on, the table of contents will be shown. When off, the table of contents will be hidden.'
+                  )
 
             v-flex(lg6 xs12)
               v-card.animated.fadeInUp.wait-p2s
@@ -151,9 +166,16 @@ export default {
         { text: 'Font Awesome 5', value: 'fa' },
         { text: 'Font Awesome 4', value: 'fa4' }
       ],
+      sidebarAlignments: [
+        { text: 'Left (default)', value: 'left' },
+        { text: 'Right', value: 'right' }
+      ],
       config: {
         theme: 'default',
         darkMode: false,
+        sidebarEnabled: true,
+        sidebarAlignment: 'left',
+        tocEnabled: true,
         iconset: '',
         injectCSS: '',
         injectHead: '',
@@ -209,6 +231,9 @@ export default {
             theme: this.config.theme,
             iconset: this.config.iconset,
             darkMode: this.darkMode,
+            sidebarEnabled: this.config.sidebarEnabled,
+            sidebarAlignment: this.config.sidebarAlignment,
+            tocEnabled: this.config.tocEnabled,
             injectCSS: this.config.injectCSS,
             injectHead: this.config.injectHead,
             injectBody: this.config.injectBody

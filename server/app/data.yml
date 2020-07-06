@@ -53,6 +53,9 @@ defaults:
       theme: 'default'
       iconset: 'md'
       darkMode: false
+      sidebarEnabled: true
+      sidebarAlignment: 'left'
+      tocEnabled: true
     auth:
       autoLogin: false
       enforce2FA: false

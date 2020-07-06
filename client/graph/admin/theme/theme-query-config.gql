@@ -4,6 +4,9 @@ query {
       theme
       iconset
       darkMode
+      sidebarEnabled
+      sidebarAlignment
+      tocEnabled
       injectCSS
       injectHead
       injectBody

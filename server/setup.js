@@ -126,6 +126,9 @@ module.exports = () => {
       _.set(WIKI.config, 'theming', {
         theme: 'default',
         darkMode: false,
+        sidebarEnabled: true,
+        sidebarAlignment: 'left',
+        tocEnabled: true,
         iconset: 'mdi',
         injectCSS: '',
         injectHead: '',

@@ -464,6 +464,12 @@ router.get('/*', async (req, res, next) => {
           injectCode.body = `${injectCode.body}\n${page.extra.js}`
         }
 
+        const sidebarEnabled = WIKI.config.theming.sidebarEnabled
+
+        const sidebarAlignment = WIKI.config.theming.sidebarAlignment
+
+        const tocEnabled = WIKI.config.theming.tocEnabled
+
         if (req.query.legacy || req.get('user-agent').indexOf('Trident') >= 0) {
           // -> Convert page TOC
           if (_.isString(page.toc)) {
@@ -474,6 +480,9 @@ router.get('/*', async (req, res, next) => {
           res.render('legacy/page', {
             page,
             sidebar,
+            sidebarEnabled,
+            sidebarAlignment,
+            tocEnabled,
             injectCode,
             isAuthenticated: req.user && req.user.id !== 2
           })
@@ -499,6 +508,9 @@ router.get('/*', async (req, res, next) => {
           res.render('page', {
             page,
             sidebar,
+            sidebarEnabled,
+            sidebarAlignment,
+            tocEnabled,
             injectCode,
             comments: WIKI.data.commentProvider,
             effectivePermissions

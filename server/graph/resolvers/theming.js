@@ -24,6 +24,9 @@ module.exports = {
         theme: WIKI.config.theming.theme,
         iconset: WIKI.config.theming.iconset,
         darkMode: WIKI.config.theming.darkMode,
+        sidebarEnabled: WIKI.config.theming.sidebarEnabled,
+        sidebarAlignment: WIKI.config.theming.sidebarAlignment,
+        tocEnabled: WIKI.config.theming.tocEnabled,
         injectCSS: new CleanCSS({ format: 'beautify' }).minify(WIKI.config.theming.injectCSS).styles,
         injectHead: WIKI.config.theming.injectHead,
         injectBody: WIKI.config.theming.injectBody
@@ -44,6 +47,9 @@ module.exports = {
           theme: args.theme,
           iconset: args.iconset,
           darkMode: args.darkMode,
+          sidebarEnabled: args.sidebarEnabled,
+          sidebarAlignment: args.sidebarAlignment,
+          tocEnabled: args.tocEnabled,
           injectCSS: args.injectCSS || '',
           injectHead: args.injectHead || '',
           injectBody: args.injectBody || ''
